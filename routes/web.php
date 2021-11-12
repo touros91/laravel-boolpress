@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('guests', 'PageController@index');
+
 Auth::routes();
 
 Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->group(function(){
     Route::get('/home', 'HomeController@index')->name('home');
+    
+
 });

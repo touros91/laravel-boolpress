@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Post;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //
+       $posts = Post::all();
+       return view('admin.index', compact('posts'));
     }
 
     /**
@@ -24,7 +26,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+        return view('comics.create');
     }
 
     /**
@@ -35,7 +37,15 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newPost = new Post();
+        $newPost->title = $data["title"];
+        $newPost->content = $data["content"];
+        $newPost->slug = $data["slug"];
+        $newPost->save();
+
+        return redirect()->route("admin.show", $newPost->id);
     }
 
     /**
