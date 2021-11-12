@@ -16,6 +16,7 @@ class HomeController extends Controller
     public function index()
     {
        $posts = Post::all();
+
        return view('admin.index', compact('posts'));
     }
 
@@ -26,7 +27,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        return view('comics.create');
+        return view('admin.create');
     }
 
     /**
@@ -54,9 +55,9 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        return view("admin.show", compact("post"));
     }
 
     /**
@@ -65,9 +66,9 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view("admin.edit", compact("post"));
     }
 
     /**
@@ -77,9 +78,12 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $data = $request->all();
+        $post->update($data);
+
+        return redirect()->route("admin.show", $post->id);
     }
 
     /**

@@ -18,12 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('guests', 'PageController@index');
+Route::resource('guests', 'PageController');
 
 Auth::routes();
 
 Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->group(function(){
     Route::get('/home', 'HomeController@index')->name('home');
-    
-
+    Route::get("/home/{post}", 'HomeController@show')->name('show');
+    Route::get("/create", 'HomeController@create')->name('create');
+    // Route::get("/store", 'HomeController@store')->name('store');
+    Route::get("/edit/{post}", 'HomeController@edit')->name('edit');
 });
