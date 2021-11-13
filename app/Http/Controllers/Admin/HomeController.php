@@ -17,7 +17,7 @@ class HomeController extends Controller
     {
        $posts = Post::all();
 
-       return view('admin.index', compact('posts'));
+       return view('admin.home', compact('posts'));
     }
 
     /**

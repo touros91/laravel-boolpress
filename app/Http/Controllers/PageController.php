@@ -7,16 +7,16 @@ use App\Post;
 
 class PageController extends Controller
 {
-    /**
+      /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $posts = Post::all();
-        
-        return view('guests.index', compact('posts'));
+       $posts = Post::all();
+
+       return view('welcome', compact('posts'));
     }
 
     /**
@@ -26,7 +26,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        // return view('admin.create');
     }
 
     /**
@@ -37,7 +37,15 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $data = $request->all();
+
+        // $newPost = new Post();
+        // $newPost->title = $data["title"];
+        // $newPost->content = $data["content"];
+        // $newPost->slug = $data["slug"];
+        // $newPost->save();
+
+        // return redirect()->route("admin.show", $newPost->id);
     }
 
     /**
@@ -46,9 +54,9 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        return view("show", compact("post"));
     }
 
     /**
@@ -57,9 +65,9 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        // return view("admin.edit", compact("post"));
     }
 
     /**
@@ -69,9 +77,12 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        // $data = $request->all();
+        // $post->update($data);
+
+        // return redirect()->route("admin.show", $post->id);
     }
 
     /**
@@ -80,8 +91,10 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        // $post->delete();
+
+        // return redirect()->route('admin.home');
     }
 }
