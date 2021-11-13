@@ -1,12 +1,8 @@
 @extends('layouts.base')
+@include('partials.admin.header')
 
 @section('pageContent')
-    <h1>Gestisci i tuoi Posts</h1>
-    <ul>
-      <li>
-        <a class="nav-link active" aria-current="page" href="{{route('admin.create')}}">New Post</a>
-      </li>
-    </ul>
+    <h2 class="mt-3">Manage your posts</h2>
 
     <table class="table mt-3">
         <thead>
@@ -29,13 +25,14 @@
             <td>
                 <a href="{{route("admin.edit", $post["id"])}}"><button type="button" class="btn btn-warning">Edit</button></a>
             </td>
-            {{-- <td>
-                <form action="{{route('home.destroy', $comic->id)}}" method="POST">
+            <td>
+                <form action="{{route('admin.destroy', $post->id)}}" method="POST">
                     @csrf
                     @method('DELETE')
+
                     <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete it?')">
                 </form>
-            </td> --}}
+            </td>
         </tr>
           @endforeach
         </tbody>

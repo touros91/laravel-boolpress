@@ -18,15 +18,13 @@
 	</div>
     <div class="form-group">
         <label for="title">Content</label>
-        <input type="text" class="form-control" name="title" id="title" placeholder="Insert content" value="{{old('content') ? old('content') : $post['content']}}">
+        <input type="text" class="form-control" name="content" id="title" placeholder="Insert content" value="{{old('content') ? old('content') : $post['content']}}">
 
 		@error('title')
 			<div class="alert alert-danger">{{ $message }}</div>
 		@enderror
 	</div>
-
 	
-
 	<button type="submit" class="btn btn-primary">Edit</button>
   </form>
     

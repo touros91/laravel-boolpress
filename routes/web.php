@@ -29,4 +29,5 @@ Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->
     Route::post("/store", 'HomeController@store')->name('store');
     Route::get("/{post}/edit", 'HomeController@edit')->name('edit');
     Route::put("/{post}/update", 'HomeController@update')->name('update');
+    Route::delete("/{post}", 'HomeController@destroy')->name('destroy');
 });
