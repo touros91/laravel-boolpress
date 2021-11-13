@@ -23,9 +23,10 @@ Route::resource('guests', 'PageController');
 Auth::routes();
 
 Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->group(function(){
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::get("/home/{post}", 'HomeController@show')->name('show');
-    Route::get("/create", 'HomeController@create')->name('create');
-    // Route::get("/store", 'HomeController@store')->name('store');
-    Route::get("/edit/{post}", 'HomeController@edit')->name('edit');
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get("/{post}", 'HomeController@show')->name('show');
+    Route::get("home/create", 'HomeController@create')->name('create');
+    Route::post("/store", 'HomeController@store')->name('store');
+    Route::get("/{post}/edit", 'HomeController@edit')->name('edit');
+    Route::put("/{post}/update", 'HomeController@update')->name('update');
 });

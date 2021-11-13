@@ -4,7 +4,7 @@
     <h1>Gestisci i tuoi Posts</h1>
     <ul>
       <li>
-        <a class="nav-link active" aria-current="page" href="{{ route('admin.create')}}">New Post</a>
+        <a class="nav-link active" aria-current="page" href="{{route('admin.create')}}">New Post</a>
       </li>
     </ul>
 
