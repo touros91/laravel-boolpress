@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@include('partials.admin.header')
+@include('partials.posts.header')
 
 
 @section('pageContent')
@@ -22,14 +22,6 @@
         <textarea name="content" class="form-control" id="content" cols="30" rows="10" placeholder="Insert content">{{ old('content') }}</textarea>
 
 		@error('description')
-			<div class="alert alert-danger">{{ $message }}</div>
-		@enderror
-	</div>
-	<div class="form-group">
-        <label for="slug">Slug</label>
-        <input type="text" class="form-control" name="slug" id="slug" placeholder="Insert slug" value="{{ old('slug') }}">
-
-		@error('title')
 			<div class="alert alert-danger">{{ $message }}</div>
 		@enderror
 	</div>

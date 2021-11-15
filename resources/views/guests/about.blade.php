@@ -1,6 +1,3 @@
-{{-- @extends('layouts.website')
+@include('partials.admin.header')
 
-@section('pageContent')
-    <h1>About Us</h1>
-@endsection --}}
 <h1>About Us</h1>

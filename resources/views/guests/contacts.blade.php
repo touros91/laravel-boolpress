@@ -1,7 +1,3 @@
-{{-- @extends('layouts.website')
-
-@section('pageContent')
-    <h1>Contatcs</h1>
-@endsection --}}
+@include('partials.admin.header')
 
 <h1>Contacts</h1>

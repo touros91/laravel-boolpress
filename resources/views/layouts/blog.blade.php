@@ -58,13 +58,9 @@
                 @endif
             </div>
         </header>
-        <div class="nav-scroller py-1 mb-2">
-            <nav class="nav d-flex">
-                <a class="p-2 link-secondary" href="{{ route('welcome') }}">Blog</a>
-                <a class="p-2 link-secondary" href="{{ route('about') }}">About</a>
-                <a class="p-2 link-secondary" href="{{ asset('contacts') }}">Contacts</a>
-            </nav>
-        </div>
+        
+        @include('partials.admin.header')
+        
     </div>
     <main class="container">
         <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
@@ -114,12 +110,7 @@
             @yield('siteContent')
             
             @yield('pageContent')
-        
-            <nav class="blog-pagination" aria-label="Pagination">
-                <a class="btn btn-outline-primary" href="#">Older</a>
-                <a class="btn btn-outline-secondary disabled">Newer</a>
-            </nav>
-
+       
         </div>
 
         <div class="col-md-4">

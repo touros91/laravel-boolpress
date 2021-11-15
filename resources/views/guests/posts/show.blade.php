@@ -2,7 +2,8 @@
 
 @section('pageContent')
 
-<h1>Titolo Post: {{$post['title']}}</h1>
-<p>Contenuto: {{$post['content']}}</p>
+<h1>{{$post['title']}}</h1>
+<p>{{$post['content']}}</p>
+<p class="blog-post-meta">{{ $post->created_at->format('d-m-Y') }}  <a href="#">Andrea</a></p>
     
 @endsection

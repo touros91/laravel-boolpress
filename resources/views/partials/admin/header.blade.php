@@ -1,8 +1,8 @@
-<div class="d-flex">
-    <div class="nav-item">
-      <a class="nav-link active" aria-current="page" href="{{ route('admin.home')}}">All Posts</a>
-    </div>
-    <div class="nav-item">
-      <a class="nav-link active" aria-current="page" href="{{ route('admin.create')}}">Creare New Post</a>
-    </div>
+<div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex">
+        <a class="p-2 link-secondary" href="{{ route('homepage') }}">Homepage</a>
+        <a class="p-2 link-secondary" href="{{ route('welcome') }}">Blog</a>
+        <a class="p-2 link-secondary" href="{{ route('about') }}">About</a>
+        <a class="p-2 link-secondary" href="{{ asset('contacts') }}">Contacts</a>
+    </nav>
 </div>

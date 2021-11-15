@@ -5,9 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
+
+    protected $validationRules = [
+        'title' => 'string|required|max:100',
+        'content' => 'string|required'
+    ];
+
       /**
      * Display a listing of the resource.
      *
@@ -38,12 +45,13 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $request->validate($this->validationRules);
 
         $newPost = new Post();
-        $newPost->title = $data["title"];
-        $newPost->content = $data["content"];
-        $newPost->slug = $data["slug"];
+        $newPost->fill($request->all());
+
+        $newPost->slug = $this->getSlug($request->title);
+
         $newPost->save();
 
         return redirect()->route("admin.show", $newPost->id)->with('success', "Post created");
@@ -80,8 +88,16 @@ class HomeController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $data = $request->all();
-        $post->update($data);
+        //validations
+        $request->validate($this->validationRules);
+
+        if($post->title != $request->title) {
+            $post->slug = $this->getSlug($request->title);
+        }
+
+        $post->fill($request->all());
+
+        $post->save();
 
         return redirect()->route("admin.show", $post->id)->with('success', "Post edited");
     }
@@ -97,5 +113,22 @@ class HomeController extends Controller
         $post->delete();
 
         return redirect()->route('admin.home')->with('success', "Post deleted");
+    }
+
+    private function getSlug($title)
+    {
+        $slug = Str::of($title)->slug('-');
+
+        $postExist = Post::where("slug", $slug)->first();
+
+        $count = 2;
+
+        while($postExist) {
+            $slug = Str::of($title)->slug('-') . "-{$count}";
+            $postExist = Post::where("slug", $slug)->first();
+            $count++;
+        }
+
+        return $slug;
     }
 }
