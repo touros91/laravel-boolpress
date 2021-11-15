@@ -46,7 +46,7 @@ class HomeController extends Controller
         $newPost->slug = $data["slug"];
         $newPost->save();
 
-        return redirect()->route("admin.show", $newPost->id);
+        return redirect()->route("admin.show", $newPost->id)->with('success', "Post created");
     }
 
     /**
@@ -83,7 +83,7 @@ class HomeController extends Controller
         $data = $request->all();
         $post->update($data);
 
-        return redirect()->route("admin.show", $post->id);
+        return redirect()->route("admin.show", $post->id)->with('success', "Post edited");
     }
 
     /**
@@ -96,6 +96,6 @@ class HomeController extends Controller
     {
         $post->delete();
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.home')->with('success', "Post deleted");
     }
 }

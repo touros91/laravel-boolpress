@@ -15,8 +15,9 @@ class PageController extends Controller
     public function index()
     {
        $posts = Post::all();
+    //    dd($posts);
 
-       return view('welcome', compact('posts'));
+       return view('guests.welcome', compact('posts'));
     }
 
     /**
@@ -56,7 +57,7 @@ class PageController extends Controller
      */
     public function show(Post $post)
     {
-        return view("show", compact("post"));
+        return view("guests.show", compact("post"));
     }
 
     /**
