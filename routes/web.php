@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+// Rotte pubbliche senza autenticazione 
 
 Route::get('/', 'PageController@index')->name('homepage');
 Route::get('/about', 'PageController@about')->name('about');
@@ -24,8 +22,11 @@ Route::get('/contacts', 'PageController@contacts')->name('contacts');
 Route::get('/blog', 'PostController@index')->name('welcome');
 Route::get("/blog/{post}", 'PostController@show')->name('show');
 
+// Rotte di autenticazione di Laravel
 
 Auth::routes();
+
+// Rotte private con autenticazione 
 
 Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->group(function(){
     Route::get('/', 'HomeController@index')->name('home');

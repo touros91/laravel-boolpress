@@ -1,5 +1,5 @@
 @extends('layouts.website')
 
-@section('siteContent')
+{{-- @section('siteContent')
     <h1>WELCOME TO THE WEBSITE!</h1>
-@endsection
+@endsection --}}
