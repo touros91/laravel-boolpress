@@ -18,9 +18,11 @@ use Illuminate\Support\Facades\Auth;
 //     return view('welcome');
 // });
 
-// Route::resource('/blog', 'PageController');
-Route::get('/blog', 'PageController@index')->name('welcome');
-Route::get("/blog/{post}", 'PageController@show')->name('show');
+Route::get('/', 'PageController@index')->name('homepage');
+Route::get('/about', 'PageController@about')->name('about');
+Route::get('/contacts', 'PageController@contacts')->name('contacts');
+Route::get('/blog', 'PostController@index')->name('welcome');
+Route::get("/blog/{post}", 'PostController@show')->name('show');
 
 
 Auth::routes();
