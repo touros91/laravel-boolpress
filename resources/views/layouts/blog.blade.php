@@ -6,7 +6,7 @@
 <meta name="description" content="">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.88.1">
-<title>Blog Template · Bootstrap v5.1</title>
+<title>Blog</title>
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/blog/">
 <!-- Bootstrap core CSS -->

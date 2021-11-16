@@ -55,8 +55,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($slug)
     {
+        // SELECT * FROM posts WHERE slug = $slug LIMIT 1
+        $post = Post::where('slug', $slug)->first();
+
         return view("guests.posts.show", compact("post"));
     }
 
