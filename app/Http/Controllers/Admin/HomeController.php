@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Str;
+use App\Category;
 
 class HomeController extends Controller
 {
@@ -34,7 +35,9 @@ class HomeController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        $categories = Category::all();
+        
+        return view('admin.create', compact('categories'));
     }
 
     /**
@@ -54,7 +57,7 @@ class HomeController extends Controller
 
         $newPost->save();
 
-        return redirect()->route("admin.show", $newPost->id)->with('success', "Post created");
+        return redirect()->route("admin.home", $newPost->id)->with('success', "New Post has been created");
     }
 
     /**
@@ -99,7 +102,7 @@ class HomeController extends Controller
 
         $post->save();
 
-        return redirect()->route("admin.show", $post->id)->with('success', "Post edited");
+        return redirect()->route("admin.home", $post->id)->with('success', "Post {$post->id} has been edited");
     }
 
     /**
@@ -112,7 +115,7 @@ class HomeController extends Controller
     {
         $post->delete();
 
-        return redirect()->route('admin.home')->with('success', "Post deleted");
+        return redirect()->route('admin.home')->with('success', "Post {$post->id} has been deleted");
     }
 
     private function getSlug($title)

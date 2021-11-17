@@ -10,13 +10,22 @@
     </div>
   </div>
       <h2 class="mt-3">Manage your posts</h2>
-  
+
+      @if ($message = Session::get('success'))
+      <div class="alert alert-success alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button>    
+        <strong>{{ $message }}</strong>
+      </div>
+      @endif
+      
       <table class="table mt-3">
           <thead>
             <tr>
               <th scope="col">#</th>
               <th scope="col">Title</th>
               <th scope="col">Slug</th>
+              <th scope="col">Category</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -25,7 +34,7 @@
               <th scope="row">{{$post["id"]}}</th>
               <td>{{$post["title"]}}</td>
               <td>{{$post["slug"]}}</td>
-  
+              <td>{{$post["category"]["name"] ?? ""}}</td>
               <td>
                   <a href="{{route("admin.show", $post["id"])}}"><button type="button" class="btn btn-primary">View</button></a>
               </td>

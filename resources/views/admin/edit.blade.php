@@ -25,6 +25,16 @@
 			<div class="alert alert-danger">{{ $message }}</div>
 		@enderror
 	</div>
+
+	<div class="form-group">
+		<label for="category">Insert post category</label>
+		<select name="category_id" id="category_id" class="form-control">
+			<option value="category">Select category</option>
+			{{-- @foreach ($categories as $category)
+			<option value="{{$category['id']}}">{{$category["name"]}}</option>
+			@endforeach --}}
+		</select>
+	</div>
 	
 	<button type="submit" class="btn btn-primary">Edit</button>
   </form>
