@@ -3,16 +3,13 @@
 @section('content')
 <div class="d-flex">
     <div class="nav-item">
-      <a class="nav-link active" aria-current="page" href="{{ route('admin.home')}}">All Posts</a>
-    </div>
-    <div class="nav-item">
-      <a class="nav-link active" aria-current="page" href="{{ route('admin.create')}}">Creare New Post</a>
-    </div>
-    <div class="nav-item">
       <a class="nav-link active" aria-current="page" href="{{ route('admin.categories.index')}}">All Categories</a>
     </div>
+    <div class="nav-item">
+      <a class="nav-link active" aria-current="page" href="{{ route('admin.categories.create')}}">Create New Category</a>
+    </div>
   </div>
-      <h2 class="mt-3">Manage your posts</h2>
+      <h2 class="mt-3">Manage your categories</h2>
 
       @if ($message = Session::get('success'))
       <div class="alert alert-success alert-block">
@@ -27,25 +24,25 @@
               <th scope="col">#</th>
               <th scope="col">Title</th>
               <th scope="col">Slug</th>
-              <th scope="col">Category</th>
               <th scope="col">Action</th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
-            @foreach ($posts as $post)
+            @foreach ($categories as $category)
             <tr>
-              <th scope="row">{{$post["id"]}}</th>
-              <td>{{$post["title"]}}</td>
-              <td>{{$post["slug"]}}</td>
-              <td>{{$post["category"]["name"] ?? ""}}</td>
+              <th scope="row">{{$category["id"]}}</th>
+              <td>{{$category["name"]}}</td>
+              <td>{{$category["slug"]}}</td>
               <td>
-                  <a href="{{route("admin.show", $post["id"])}}"><button type="button" class="btn btn-primary">View</button></a>
+                  <a href="{{route("admin.categories.show", $category["id"])}}"><button type="button" class="btn btn-primary">View</button></a>
               </td>
               <td>
-                  <a href="{{route("admin.edit", $post["id"])}}"><button type="button" class="btn btn-warning">Edit</button></a>
+                  <a href="{{route("admin.categories.edit", $category["id"])}}"><button type="button" class="btn btn-warning">Edit</button></a>
               </td>
               <td>
-                  <form action="{{route('admin.destroy', $post->id)}}" method="POST">
+                  <form action="{{route('admin.categories.destroy', $category->id)}}" method="POST">
                       @csrf
                       @method('DELETE')
   

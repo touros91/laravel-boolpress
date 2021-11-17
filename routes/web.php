@@ -36,4 +36,6 @@ Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->
     Route::get("/{post}/edit", 'HomeController@edit')->name('edit');
     Route::put("/{post}/update", 'HomeController@update')->name('update');
     Route::delete("/{post}", 'HomeController@destroy')->name('destroy');
+
+    Route::resource('/admin/categories', 'CategoryController');
 });
