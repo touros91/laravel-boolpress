@@ -4,7 +4,7 @@
 @section('pageContent')
 
 <h1>Edit post: {{$post["title"]}}</h1>
-@dump($post['tags'])
+
 <form action="{{route("admin.update", $post["id"])}}" method="POST">
 	@csrf
     @method("PUT")
@@ -39,7 +39,7 @@
 	<div class="form-group">
 		<p>Tags</p>
 		@foreach ($tags as $tag)
-			<div class="custom-control custom-checkbox">
+			<div class="custom-control custom-checkbox"> 
 				<input {{$post['tags']->contains($tag['id']) ? "checked" : null}} type="checkbox" name="tags[]" class="custom-control-input" id="tag-{{$tag['id']}}" value="{{$tag['id']}}">
 				<label for="tag-{{$tag['id']}}" class="custom-control-label">{{$tag['name']}}</label>
 			</div>

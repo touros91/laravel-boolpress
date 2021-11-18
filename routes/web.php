@@ -21,6 +21,8 @@ Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contacts', 'PageController@contacts')->name('contacts');
 Route::get('/blog', 'PostController@index')->name('welcome');
 Route::get("/blog/{slug}", 'PostController@show')->name('show');
+Route::get("/blog/category/{slug}", 'CategoryController@show')->name('categories.show');
+
 
 // Rotte di autenticazione di Laravel
 

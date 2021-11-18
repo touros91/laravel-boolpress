@@ -30,7 +30,7 @@
 		<select name="category_id" id="category_id" class="form-control">
 			<option value="category">Select category</option>
 			@foreach ($categories as $category)
-			<option value="{{$category['id']}}">{{$category["name"]}}</option>
+			<option {{ old("category_id") == $category["id"] ? 'selected' : null }} value="{{$category['id']}}">{{$category["name"]}}</option>
 			@endforeach
 		</select>
 	</div>
@@ -38,7 +38,7 @@
 		<p>Tags</p>
 		@foreach ($tags as $tag)
 			<div class="custom-control custom-checkbox">
-				<input type="checkbox" name="tags[]" class="custom-control-input" id="tag-{{$tag['id']}}" value="{{$tag['id']}}">
+				<input {{in_array($tag['id'], old('tags', [])) ? "checked" : null}} type="checkbox" name="tags[]" class="custom-control-input" id="tag-{{$tag['id']}}" value="{{$tag['id']}}">
 				<label for="tag-{{$tag['id']}}" class="custom-control-label">{{$tag['name']}}</label>
 			</div>
 		@endforeach
