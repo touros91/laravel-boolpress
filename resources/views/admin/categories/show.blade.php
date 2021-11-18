@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@include('partials.posts.header')
+@include('partials.admin.categories.header')
 
 
 @section('pageContent')
