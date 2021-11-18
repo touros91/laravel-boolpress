@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@include('partials.posts.header')
+@include('partials.admin.posts.header')
 
 
 @section('pageContent')
@@ -34,6 +34,21 @@
 			@endforeach
 		</select>
 	</div>
+	<div class="form-group">
+		<p>Tags</p>
+		@foreach ($tags as $tag)
+
+		<div class="custom-control custom-checkbox">
+			<input type="checkbox" name="tags[]" class="custom-control-input" id="tag-{{$tag['id']}}" value="{{$tag['id']}}">
+			<label for="tag-{{$tag['id']}}" class="custom-control-label">{{$tag['name']}}</label>
+		</div>
+		@endforeach
+
+	
+
+
+	</div>
+
 
 	<button type="submit" class="btn btn-primary">Create</button>
   </form>

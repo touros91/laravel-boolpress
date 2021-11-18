@@ -7,13 +7,16 @@ use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Str;
 use App\Category;
+use App\Tag;
 
 class HomeController extends Controller
 {
 
     protected $validationRules = [
         'title' => 'string|required|max:100',
-        'content' => 'string|required'
+        'content' => 'string|required',
+        'category_id' => 'nullable|exists:categories,id',
+        'tag_id' => 'exists:tags,id'
     ];
 
       /**
@@ -36,8 +39,10 @@ class HomeController extends Controller
     public function create()
     {
         $categories = Category::all();
-        
-        return view('admin.create', compact('categories'));
+
+        $tags = Tag::all();
+
+        return view('admin.create', compact('categories', 'tags'));
     }
 
     /**

@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@include('partials.posts.header')
+@include('partials.admin.posts.header')
 
 @section('pageContent')
 
@@ -26,15 +26,17 @@
 		@enderror
 	</div>
 
-	<div class="form-group">
+	{{-- <div class="form-group">
 		<label for="category">Insert post category</label>
 		<select name="category_id" id="category_id" class="form-control">
 			<option value="category">Select category</option>
 			@foreach ($categories as $category)
-			<option value="{{$category['id']}}">{{$category["name"]}}</option>
+			<option {{ old("category_id", $post["category"]) == $category['id'] ? 'selected' : null }} value="{{$category['id']}}">{{$category["name"]}}</option>
 			@endforeach
 		</select>
-	</div>
+	</div> --}}
+
+	
 	
 	<button type="submit" class="btn btn-primary">Edit</button>
   </form>
