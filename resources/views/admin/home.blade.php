@@ -31,6 +31,7 @@
               <th scope="col">Title</th>
               <th scope="col">Slug</th>
               <th scope="col">Category</th>
+              <th scope="col">Tags</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -41,6 +42,13 @@
               <td>{{$post["title"]}}</td>
               <td>{{$post["slug"]}}</td>
               <td>{{$post["category"]["name"] ?? ""}}</td>
+              <td>
+                  @if (count($post['tags']) > 0)
+                      @foreach ($post['tags'] as $tag)
+                          <span class="badge badge-primary">{{$tag['name']}}</span> 
+                      @endforeach
+                  @endif
+              </td>
               <td>
                   <a href="{{route("admin.show", $post["id"])}}"><button type="button" class="btn btn-primary">View</button></a>
               </td>

@@ -62,6 +62,8 @@ class HomeController extends Controller
 
         $newPost->save();
 
+        $newPost->tags()->attach($request['tags']);
+
         return redirect()->route("admin.home", $newPost->id)->with('success', "New Post has been created");
     }
 
@@ -84,7 +86,11 @@ class HomeController extends Controller
      */
     public function edit(Post $post)
     {
-        return view("admin.edit", compact("post"));
+        $categories = Category::all();
+
+        $tags = Tag::all();
+
+        return view("admin.edit", compact("post", "categories", "tags"));
     }
 
     /**
@@ -106,6 +112,8 @@ class HomeController extends Controller
         $post->fill($request->all());
 
         $post->save();
+
+        $post->tags()->sync($request->tags);
 
         return redirect()->route("admin.home", $post->id)->with('success', "Post {$post->id} has been edited");
     }

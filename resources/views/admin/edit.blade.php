@@ -4,7 +4,7 @@
 @section('pageContent')
 
 <h1>Edit post: {{$post["title"]}}</h1>
-
+@dump($post['tags'])
 <form action="{{route("admin.update", $post["id"])}}" method="POST">
 	@csrf
     @method("PUT")
@@ -26,17 +26,25 @@
 		@enderror
 	</div>
 
-	{{-- <div class="form-group">
+	<div class="form-group">
 		<label for="category">Insert post category</label>
 		<select name="category_id" id="category_id" class="form-control">
 			<option value="category">Select category</option>
 			@foreach ($categories as $category)
-			<option {{ old("category_id", $post["category"]) == $category['id'] ? 'selected' : null }} value="{{$category['id']}}">{{$category["name"]}}</option>
+			<option value="{{$category['id']}}">{{$category["name"]}}</option>
 			@endforeach
 		</select>
-	</div> --}}
+	</div>
 
-	
+	<div class="form-group">
+		<p>Tags</p>
+		@foreach ($tags as $tag)
+			<div class="custom-control custom-checkbox">
+				<input {{$post['tags']->contains($tag['id']) ? "checked" : null}} type="checkbox" name="tags[]" class="custom-control-input" id="tag-{{$tag['id']}}" value="{{$tag['id']}}">
+				<label for="tag-{{$tag['id']}}" class="custom-control-label">{{$tag['name']}}</label>
+			</div>
+		@endforeach
+	</div>
 	
 	<button type="submit" class="btn btn-primary">Edit</button>
   </form>
