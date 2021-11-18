@@ -8,6 +8,9 @@
     <div class="nav-item">
       <a class="nav-link active" aria-current="page" href="{{ route('admin.categories.create')}}">Create New Category</a>
     </div>
+    <div class="nav-item">
+      <a class="nav-link active" aria-current="page" href="{{ route('admin.home')}}">All Posts</a>
+    </div>
   </div>
       <h2 class="mt-3">Manage your categories</h2>
 
